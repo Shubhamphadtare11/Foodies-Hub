@@ -1,1 +1,1 @@
-HI
+HI, npm is ready
