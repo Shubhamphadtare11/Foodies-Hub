@@ -17,3 +17,19 @@ HI, npm is ready
 - HTTPs
 - Tree Shaking - remove unused code
 - Different dev and prod bundles
+
+#Food Ordering App
+
+* Header
+* - Logo
+  - Nav Items
+* Body
+  - Search
+  - RestaurantContainer
+    - RestaurantCard
+* Footer
+  - Copyright
+  - Links
+  - Address
+  - Contact
+
