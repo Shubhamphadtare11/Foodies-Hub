@@ -1,13 +1,28 @@
 import RestaurantCard from "./RestaurantCard";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import resList from "../utils/mockData";
+import Shimmer from "./Shimmer";
 
-// Not using keys(not acceptable) <<< index as key <<< unique id
 const Body = () => {
-
     //local state variable - super powerful variable
+    const [listOfRestaurants, setListOfRestaurant] = useState([]);
 
-    const [listOfRestaurants, setListOfRestaurant] = useState(resList);
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    const fetchData = async () => {
+        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.5204303&lng=73.8567437&page_type=DESKTOP_WEB_LISTING");
+    
+        const json = await data.json();
+    
+        console.log(json);
+        setListOfRestaurant(json?.data?.cards[2]?.data?.data?.cards);
+    };
+
+    if(listOfRestaurants.length ===0){
+        return <Shimmer />;
+    }
 
     return(
         <div className="body">
