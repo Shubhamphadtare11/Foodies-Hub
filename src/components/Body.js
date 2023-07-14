@@ -6,6 +6,8 @@ import Shimmer from "./Shimmer";
 const Body = () => {
     //local state variable - super powerful variable
     const [listOfRestaurants, setListOfRestaurant] = useState([]);
+    const [filteredRestaurant, setFilteredRestaurant] = useState([]);
+    const [searchText, setSearchText] = useState("");
 
     useEffect(() => {
         fetchData();
@@ -18,15 +20,27 @@ const Body = () => {
     
         console.log(json);
         setListOfRestaurant(json?.data?.cards[2]?.data?.data?.cards);
+        setFilteredRestaurant(json?.data?.cards[2]?.data?.data?.cards);
     };
 
-    if(listOfRestaurants.length ===0){
-        return <Shimmer />;
-    }
 
-    return(
+    //Conditional Rendering
+    return listOfRestaurants.length ===0 ? <Shimmer /> :(
         <div className="body">
-            <div className="filer">
+            <div className="filter">
+                <div className="search">
+                    <input type="text" className="search-box" value={searchText} 
+                    onChange={ (e) =>
+                        {setSearchText(e.target.value);}
+                    } />
+                    <button onClick={
+                        () => {
+                            const filteredRestaurant = listOfRestaurants.filter(
+                                (res) => res.data.name.toLowerCase().includes(searchText.toLowerCase()));
+                                setFilteredRestaurant(filteredRestaurant);
+                        }
+                    }>Search</button>
+                </div>
                 <button className="filter-btn" onClick={
                     () =>{
                         const filteredList= listOfRestaurants.filter((res) => res.data.avgRating>4);
@@ -37,7 +51,7 @@ const Body = () => {
             </div>
             <div className="res-container">
           {
-            listOfRestaurants.map((restaurant) => (
+            filteredRestaurant.map((restaurant) => (
             <RestaurantCard key={restaurant.data.id} resData={restaurant}/>
             ))
           }
