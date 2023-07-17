@@ -1,7 +1,7 @@
 import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
-import resList from "../utils/mockData";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
     //local state variable - super powerful variable
@@ -52,7 +52,7 @@ const Body = () => {
             <div className="res-container">
           {
             filteredRestaurant.map((restaurant) => (
-            <RestaurantCard key={restaurant.data.id} resData={restaurant}/>
+            <Link key={restaurant.data.id} to={"/restaurants/" + restaurant.data.id}><RestaurantCard resData={restaurant}/></Link> 
             ))
           }
             </div>
