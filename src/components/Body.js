@@ -2,6 +2,7 @@ import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
     //local state variable - super powerful variable
@@ -23,6 +24,11 @@ const Body = () => {
         setFilteredRestaurant(json?.data?.cards[2]?.data?.data?.cards);
     };
 
+
+    const onlineStatus = useOnlineStatus();
+
+    if(onlineStatus === false) 
+        return <h1>looks like you are offline, please check internet connection</h1>
 
     //Conditional Rendering
     return listOfRestaurants.length ===0 ? <Shimmer /> :(

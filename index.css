@@ -58,3 +58,7 @@ flex-wrap: wrap;
     display: flex;
     align-items: center;
 }
+.user-card{
+    padding: 10px;
+    border: 1px solid black;
+}
