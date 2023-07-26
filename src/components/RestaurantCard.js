@@ -7,7 +7,7 @@ const styleCard = {
 const RestaurantCard = (props) => {
     const {resData} = props;
 
-    const{cloudinaryImageId, name, cuisines, avgRating, costForTwo, deliveryTime} = resData?.data;
+    const{cloudinaryImageId, name, cuisines, avgRating, costForTwo, deliveryTime} = resData?.info;
 
     return (
         <div className="res-card m-4 p-4 w-[250px] rounded-lg bg-gray-100 hover:bg-gray-200" style={styleCard}>
@@ -16,8 +16,7 @@ const RestaurantCard = (props) => {
             <h3 className="font-bold py-4" style={{fontSize: "20px"}}>{name}</h3>
             <h4>{cuisines.join(", ")}</h4>
             <h4>{avgRating}</h4>
-            <h4>Rs.{costForTwo/100}FOR TWO</h4>
-            <h4>{deliveryTime} minutes</h4>
+            <h4>Rs.{costForTwo}</h4>
         </div>
     );
 };
