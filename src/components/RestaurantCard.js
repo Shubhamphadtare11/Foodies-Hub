@@ -7,7 +7,7 @@ const styleCard = {
 const RestaurantCard = (props) => {
     const {resData} = props;
 
-    const{cloudinaryImageId, name, cuisines, avgRating, costForTwo, deliveryTime} = resData?.info;
+    const{cloudinaryImageId, name, cuisines, avgRating, costForTwo} = resData?.info;
 
     return (
         <div className="res-card m-4 p-4 w-[250px] rounded-lg bg-gray-100 hover:bg-gray-200" style={styleCard}>

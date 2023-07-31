@@ -3,9 +3,10 @@ import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
+
 const Header = () => {    
 
-    const [btnNameReact, setBtnNameReact] = useState("Login");
+    const[btnNameReact, setBtnNameReact] = useState("Login");
 
     const onlineStatus = useOnlineStatus();
 
@@ -32,9 +33,9 @@ const Header = () => {
                     <li className="px-4"><Link to="/contact">Contact Us</Link></li>
                     <li className="px-4"><Link to="/grocery">Grocery</Link></li> 
                     <li className="px-4"><Link to="/cart">Cart</Link></li>
-                    <button className="login" onClick={() =>{
-                      btnNameReact==="Login" ? setBtnNameReact ("Logout") : setBtnNameReact ("Login");
-                    }}>{btnNameReact}</button>
+               <button className="login" onClick={() =>{
+                    btnNameReact == "Login" ? setBtnNameReact("Logout") : setBtnNameReact("Login");
+               }}>{btnNameReact}</button>
                     <li className="px-4 font-bold">{loggedInUser}</li>
                 </ul>
             </div>

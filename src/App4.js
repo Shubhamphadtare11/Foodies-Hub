@@ -8,6 +8,7 @@ import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import UserContext from "./utils/UserContext";
+import useOnlineStatus from "./utils/useOnlineStatus";
 
 
 const Grocery = lazy(() => import("./components/Grocery")); 
