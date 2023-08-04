@@ -9,8 +9,9 @@ const RestaurantCard = (props) => {
 
     const{cloudinaryImageId, name, cuisines, avgRating, costForTwo} = resData;
 
+
     return (
-        <div className="res-card m-4 p-4 w-[250px] rounded-lg bg-gray-100 hover:bg-gray-200" style={styleCard}>
+        <div data-testid="resCard" className="res-card m-4 p-4 w-[250px] rounded-lg bg-gray-100 hover:bg-gray-200" style={styleCard}>
             <img className="res-logo rounded-lg"
              src={ CDN_URL+ cloudinaryImageId}></img>
             <h3 className="font-bold py-4" style={{fontSize: "20px"}}>{name}</h3>
