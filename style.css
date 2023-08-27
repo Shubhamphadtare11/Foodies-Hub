@@ -1,0 +1,262 @@
+:root{
+    --primary-color:#ff8800;
+    --hover-color:#ff4500;
+}
+
+/* Header */
+
+.navHeader{
+    display: flex;
+    align-items: center;
+}
+.navHeader:hover{
+    transition: 0.5s;
+    color: var(--hover-color);
+}
+.nav-items ul li{
+    color: gray;
+    font-weight: 400;
+}
+
+/* Body */
+
+.searchBtn{
+    color: black;
+    background-color: var(--primary-color);
+}
+.searchBtn:hover{
+    transition: 0.5s;
+    background-color: var(--hover-color);
+    color: white;
+}
+.topRated:hover{
+    transition: 0.5s;
+    background-color: var(--hover-color);
+    color: white;
+}
+.headingTitle{
+    margin: 6px 0;
+    font-size: 23px;
+}
+.filter-btn{
+    border: 1px solid  var(--primary-color);
+    margin: 0 9px;
+    border-radius: 23px;
+}
+
+/* RestaurantCard */
+
+.res-card:hover{
+    transition: 0.5s;
+    color: var(--hover-color);
+}
+.text.single-line {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+.avgrating{
+    justify-content: center;
+    color: white;
+    align-items: center;
+    display: flex;
+    text-align: center;
+    width: 3rem;
+}
+
+
+/* RestaurantMenu */
+
+.details, .card-detail{
+    display: flex;
+    justify-content: space-between;
+    margin: 23px 0;
+}
+.search-like p{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.home-path h6{
+    display: flex;
+}
+.restaurant-info {
+    display: flex;
+    justify-content: space-between;
+    margin: 12px 0;
+}
+.restaurant-rating {
+    border-radius: 5px;
+    box-shadow: 0 0 5px 5px #ece9e7;
+    padding: 5px;
+    text-align: center;
+}
+.starrating {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    color: green;
+    font-size: 18px;
+    font-weight: bolder;
+}
+.time-and-price p{
+    margin: 19px 0;
+    display: flex;
+    align-items: center;
+}
+.offer-upto {
+    border-radius: 5px;
+    box-shadow: 0 0 2px 2px #ece9e7;
+    margin: 0;
+    padding: 2px;
+    text-align: center;
+}
+.upto-off {
+    color: #6d6c6c;
+    font-size: 15px;
+    font-weight: bolder;
+}
+
+
+
+/* ItemList */
+
+.nonveg-icon {
+    border: 0.2px solid red;
+    color: red;
+    padding: 2px;
+}
+.veg-icon {
+    border: 0.2px solid green;
+    color: green;
+    padding: 2px;
+}
+.addBtn{
+    color: black;
+    background-color: var(--primary-color);
+}
+.addBtn:hover{
+    transition: 0.5s;
+    background-color: var(--hover-color);
+    color: white;
+}
+
+
+
+/* Cart */
+
+.backtomenu {
+    background-color: #ff4500;
+}
+.removeallitem {
+    background-color: red;
+}
+.backtomenu, .removeallitem {
+    border: 1px solid #fff;
+    border-radius: 5px;
+    color: #fff;
+    padding: 5px;
+}
+.cards, .cart-details {
+    background-color: #fff;
+    padding: 10px;
+}
+.cart-details {
+    box-shadow: 0 0 2px 2px #e3e3e2;
+    height: auto;
+}
+.card-detailss {
+    display: flex;
+}
+.cartbtn {
+    display: flex;
+    justify-content: space-between;
+}
+.addBtnremove {
+    color: red;
+    font-weight: bolder;
+}
+.addBtncart {
+    background-color: #fff;
+    border: 0.1px solid gray;
+    border-radius: 4px;
+    box-shadow: 0 0 2px 2px #ece9e7;
+    color: #ff4500;
+    font-weight: 700;
+    text-align: center;
+    margin: 8px 0;
+    justify-content: center;
+    width: 3rem;
+    display: flex;
+    align-items: center;
+}
+.menuimage, .menuimages {
+    border-radius: 10px;
+}
+.bill-section {
+    background-color: #fff;
+    box-shadow: 0 0 2px 2px #e3e3e2;
+    height: 650px;
+    padding: 15px;
+    width: 400px;
+}
+.cart-container {
+    text-align: center;
+}
+.billing {
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 0;
+    font-size: 15px;
+    font-weight: 500;
+}
+.billing p{
+        display: flex;
+        align-items: center;
+}
+.apply {
+    border: 2px dotted gray;
+    font-weight: 700;
+    text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+}
+.apply p{
+    align-items: center;
+    height: 3rem;
+    display: flex;
+}
+.paybtn {
+    background-color: #ff4500;
+    border: 0 solid gray;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: 700;
+    padding: 8px;
+}
+.foodpolicy {
+    border: 0.5px solid #e3dfdf;
+    margin-top: 15px;
+    padding: 10px;
+    text-align: left;
+}
+
+
+
+/* Emptycart */
+
+.cartimg {
+    text-align: center;
+}
+.cartimg img{
+    margin: 0 auto;
+}
+.btn-warning{
+    background-color: #ff4500;
+    border: 0 solid gray;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: 700;
+    padding: 8px;   
+}

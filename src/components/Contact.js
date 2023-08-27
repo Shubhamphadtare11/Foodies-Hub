@@ -1,12 +1,17 @@
+import UserContext from "../utils/UserContext";
+import { useContext } from "react";
+
 const Contact = () => {
+
+    const {loggedInUser, setUserName} = useContext(UserContext);
+
     return(
-        <div>
-            <h1 className="font-bold text-3xl p-4 m-4">Contact Us</h1>
-            <form>
-                <input type="text" className="border border-black p-2 m-2" placeholder="name" />
-                <input type="text" className="border border-black p-2 m-2" placeholder="message" />
-                <button className="border border-black p-2 m-2 bg-gray-100 rounded-lg">Submit</button>
-            </form>
+        <div >
+            <h1 className="text-xl font-bold">fetch data from context api and updated</h1>
+              <div className="search m-4 p-4 flex items-center">
+                    <label>User : </label>
+                    <input className="border border-black p-2" value={loggedInUser} onChange={(e) => setUserName(e.target.value)} />
+            </div>
         </div>
     );
 };

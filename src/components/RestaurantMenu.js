@@ -1,44 +1,148 @@
 import Shimmer from "./Shimmer";
-import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import RestaurantCategory from "./RestaurantCategory";
 import { useState } from "react";
+import { IoChevronBackCircleOutline } from "react-icons/io5";
+import { AiFillStar, AiOutlineHeart } from "react-icons/ai";
+import { HiMiniCurrencyRupee } from "react-icons/hi2";
+import { CiPercent } from "react-icons/ci";
+import { FiSearch } from "react-icons/fi";
+import { BiSolidTimeFive } from "react-icons/bi";
 
 const RestaurantMenu = () => {
+  const { resId } = useParams();
 
-    const { resId } = useParams();   
+  const navigate = useNavigate;
 
-    const resInfo = useRestaurantMenu(resId);
+  const resInfo = useRestaurantMenu(resId);
 
-    const[showIndex, setShowIndex] = useState(null);
+  const [showIndex, setShowIndex] = useState(null);
 
- if (resInfo === null) return <Shimmer /> 
-    
- const { name, cuisines, costForTwoMessage } = 
- resInfo?.cards[0]?.card?.card?.info;
+  const [fevoroute, setFevoroute] = useState("");
 
- //const {itemCards} = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
+  if (resInfo === null) return <Shimmer />;
 
- const categories = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
-    c=> c.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory");
+  const handleFeveroute = () => {
+    setFevoroute("red");
+  };
+  
+  const {
+    city,
+    totalRatingsString,
+    name,
+    avgRating,
+    cuisines,
+    costForTwoMessage,
+    areaName,
+  } = resInfo?.cards[0]?.card?.card?.info;
 
-    
+  const { slaString } = resInfo?.cards[0]?.card?.card?.info?.sla;
 
- return (
-    <div className="menu text-center">
-        <h1 className="font-bold my-6 text-2xl">{name}</h1>
-        <p className="font-bold text-lg">{cuisines.join(", ")} - {costForTwoMessage}</p>
-        {/* categories accordian */}
-        {categories.map((category, index) => (
-            //Controlled Component
-        <RestaurantCategory 
-         key={category?.card?.card.title}
-         data={category?.card?.card}
-         showItems={index===showIndex ? true : false} 
-         setShowIndex={() => setShowIndex(index)} /> 
-         ))}
-    </div> 
-);
+  //const {itemCards} = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
+
+  const categories =
+    resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+      (c) =>
+        c.card?.card?.["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    );
+
+  return (
+    <div className="restaurant-menu">
+      <div className="container mx-auto">
+        <div className="pt-5 pb-5">
+          <div className="row grid grid-cols-12">
+            <div className="col-md-2 md:col-span-2"> </div>
+            <div className="col-md-8 md:col-span-8">
+              <div className="details">
+                <div className="home-path">
+                  <h6>
+                    <Link to="/">
+                    <IoChevronBackCircleOutline
+                      style={{ color: "orangered", fontSize: "20px" }}
+                    /></Link>{" "}
+                    Home / {city} / {areaName}
+                  </h6>
+                </div>
+                <div className="search-like">
+                  <p style={{ fontSize: "22px", textAlign: "center" }}>
+                    <AiOutlineHeart
+                      onClick={handleFeveroute}
+                      style={{ color: { fevoroute } }}
+                    />{" "}
+                    &nbsp;&nbsp;|&nbsp;&nbsp; <FiSearch />
+                  </p>
+                </div>
+              </div>
+              <div className="restaurant-info">
+                <div className="restaurantDetails">
+                  <h2 style={{ fontWeight: "bolder" }}>{name}</h2>
+                  <h6 style={{ fontSize: "15px", color: "gray" }}>
+                    {cuisines.join(", ")}
+                  </h6>
+                  <h6 style={{ fontSize: "13px", color: "gray" }}>
+                    {areaName}
+                  </h6>
+                </div>
+                <div className="restaurant-rating">
+                  <h6 className="starrating">
+                    <AiFillStar /> {avgRating}
+                  </h6>
+                  <hr></hr>
+                  <h6 className="starratings">{totalRatingsString}</h6>
+                </div>
+              </div>
+              <hr></hr>
+              <div className="time-and-price">
+                <p style={{ fontWeight: "bolder" }}>
+                  <BiSolidTimeFive style={{ fontSize: "20px" }} /> {slaString} |
+                  <HiMiniCurrencyRupee style={{ fontSize: "20px" }} />
+                  {costForTwoMessage}
+                </p>
+              </div>
+              <div className="row grid grid-cols-12">
+                <div className="col-md-3 offer-upto md:col-span-3">
+                  <h6 className="upto-off flex">
+                    <CiPercent /> Flat 10% off upto 120
+                  </h6>
+                  <h6 className="use-off">USE PARTY I ABOVE Rs.130</h6>
+                </div>
+                <div className="col-md-3 offer-upto md:col-span-3">
+                  <h6 className="upto-off">Flat 10% off upto 120</h6>
+                  <h6 className="use-off">USE PARTY I ABOVE Rs.130</h6>
+                </div>
+                <div className="col-md-3 offer-upto md:col-span-3">
+                  <h6 className="upto-off">Flat 10% off upto 120</h6>
+                  <h6 className="use-off">USE PARTY I ABOVE Rs.130</h6>
+                </div>
+                <div className="col-md-3 offer-upto md:col-span-3">
+                  <h6 className="upto-off">Flat 10% off upto 120</h6>
+                  <h6 className="use-off">USE PARTY I ABOVE Rs.130</h6>
+                </div>
+              </div>
+            
+              <hr></hr>
+              {/* category-accordian for restaurant menu */}
+              {/* categories accordian */}
+              {categories.map((category, index) => (
+                //Controlled Component
+                <RestaurantCategory
+                  key={category?.card?.card.title}
+                  data={category?.card?.card}
+                  showItems={index === showIndex ? true : false}
+                  setShowIndex={() => setShowIndex(index)}
+                />
+              ))}
+            </div>
+            <div className="col-md-2"> </div>
+          </div>
+          <div className="pb-5"></div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default RestaurantMenu;

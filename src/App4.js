@@ -12,6 +12,7 @@ import useOnlineStatus from "./utils/useOnlineStatus";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
 import Cart from "./components/Cart";
+ 
 
 
 const Grocery = lazy(() => import("./components/Grocery")); 
@@ -24,7 +25,7 @@ const AppLayout = () => {
   useEffect(() => {
     //make an api call and send username and password
     const data = {
-      name: "Shubham Phadtare",
+      name: "Shubham",
     };
     setUserName(data.name);
 
@@ -62,8 +63,8 @@ const appRouter = createBrowserRouter([
         element: <Contact />,
       },
       {
-        path: "/grocery",
-        element: <Suspense fallback={<h1>Loading...</h1>}><Grocery /></Suspense>,
+        path: "/offer",
+        element: <Suspense fallback={<h1>Loading...</h1>}><Error/></Suspense>,
       },
       {
         path: "/restaurants/:resId",
