@@ -34,10 +34,10 @@
     background-color: var(--hover-color);
     color: white;
 }
-.headingTitle{
+/* .headingTitle{
     margin: 6px 0;
     font-size: 23px;
-}
+} */
 .filter-btn{
     border: 1px solid  var(--primary-color);
     margin: 0 9px;

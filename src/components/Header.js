@@ -42,7 +42,7 @@ const Header = () => {
                     {/* <li className="px-4"><Link to="/about">About Us</Link></li> */}
                     {/* <li className="px-4"><Link to="/contact">Contact Us</Link></li> */}
                     <li className="px-4"><Link to="/offer" className="navHeader"><BiSolidOffer />Offer<sup style={{ color: "orangered" }}>New</sup></Link></li> 
-                    <li className="px-4 font-bold"><Link to="/cart" className="navHeader"><BiSolidCartAlt />Cart - ({cartItems.length} items)</Link></li>
+                    <li className="px-4 font-bold"><Link to="/cart" className="navHeader"><BiSolidCartAlt />Cart - ({cartItems.length})</Link></li>
                     <li className="px-4"><button className="login navHeader" onClick={() =>{
                     btnNameReact == "Login" ? setBtnNameReact("Logout") : setBtnNameReact("Login");
                }}>  {btnNameReact === "Login" ? (
