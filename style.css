@@ -17,6 +17,10 @@
     color: gray;
     font-weight: 400;
 }
+.headingTitle{
+    margin: 10px 10px;
+    font-size: 21px;
+}
 
 /* Body */
 
