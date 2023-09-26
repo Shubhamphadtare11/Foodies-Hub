@@ -72,7 +72,7 @@ const Body = () => {
       <div className="md:mx-10">
         <div className="headingTitle">
           <h4 className="" style={{ fontWeight: "bolder" }}>
-            Restaurants with online food delivery in Maharashtra
+            Restaurants with online food delivery in Pune
           </h4>
         </div>
         <div className="filter grid grid-cols-12">
