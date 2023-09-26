@@ -1,5 +1,4 @@
 {
-  "homepage":"https://fireclint.github.io/Foodies-Hub",
   "name": "react-chapter-2",
   "version": "1.0.0",
   "description": "react npm first code",
@@ -7,9 +6,7 @@
     "start": "parcel index.html",
     "build": "parcel build index.html",
     "test": "jest",
-    "watch-test": "jest --watch",
-    "predeploy": "npm run build",
-   "deploy": "gh-pages -d build"
+    "watch-test": "jest --watch"
   },
   "repository": {
     "type": "git",
