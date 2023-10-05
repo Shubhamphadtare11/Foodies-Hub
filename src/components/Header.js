@@ -31,7 +31,7 @@ const Header = () => {
     return(
         <div className="header flex justify-between shadow-lg ">
             <div className="logo-container">
-                <img className="logo w-36" src={LOGO_URL} />
+                <img className="logo w-[5rem] ml-2" src={LOGO_URL} />
             </div>
             <div className="nav-items flex items-center">
                 <ul className="flex">
