@@ -128,7 +128,7 @@ const Body = () => {
           </div>
         </div>
         <div className="res-container  flex flex-wrap">
-          {filteredRestaurant.map((restaurant) => (
+          {filteredRestaurant && filteredRestaurant.map((restaurant) => (
             <Link
               key={restaurant.info.id}
               to={"/restaurants/" + restaurant.info.id}
