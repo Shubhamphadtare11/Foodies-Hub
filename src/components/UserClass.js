@@ -46,3 +46,24 @@ class UserClass extends React.Component {
 }
 
 export default UserClass;
+
+
+/*
+--Mounting--
+
+Constructor(dummy)
+Rending (dummy)
+    <HTML Dummy>
+Component Did Mounting  
+    <API Call>
+    <this.setState>
+
+--Update
+
+render(API Data)
+<HTML (new API data)>
+componentDidUpdate)(It will call on every render)
+
+-componentWillUnmount will call when we move to different component.
+
+*/
