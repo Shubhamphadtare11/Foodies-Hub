@@ -23,12 +23,14 @@ const Body = () => {
     );
 
     const json = await data.json();
-
+    // console.log(
+    //   json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    // );
     setListOfRestaurant(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setFilteredRestaurant(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
 
@@ -65,7 +67,7 @@ const Body = () => {
   };
 
   //Conditional Rendering
-  return listOfRestaurants.length === 0 ? (
+  return listOfRestaurants?.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="body container mx-auto ">
@@ -128,18 +130,19 @@ const Body = () => {
           </div>
         </div>
         <div className="res-container  flex flex-wrap">
-          {filteredRestaurant && filteredRestaurant.map((restaurant) => (
-            <Link
-              key={restaurant.info.id}
-              to={"/restaurants/" + restaurant.info.id}
-            >
-              {restaurant?.info.promoted ? (
-                <RestaurantCardPromoted resData={restaurant?.info} />
-              ) : (
-                <RestaurantCard resData={restaurant?.info} />
-              )}
-            </Link>
-          ))}
+          {filteredRestaurant &&
+            filteredRestaurant.map((restaurant) => (
+              <Link
+                key={restaurant.info.id}
+                to={"/restaurants/" + restaurant.info.id}
+              >
+                {restaurant?.info.promoted ? (
+                  <RestaurantCardPromoted resData={restaurant?.info} />
+                ) : (
+                  <RestaurantCard resData={restaurant?.info} />
+                )}
+              </Link>
+            ))}
         </div>
       </div>
     </div>
