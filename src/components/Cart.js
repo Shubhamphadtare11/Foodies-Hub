@@ -40,7 +40,7 @@ const Cart = () => {
           ) : (
             <>
             <div className="grid grid-cols-12">
-            <div className="md:col-span-8">
+            <div className="col-span-12 md:col-span-8">
               <div className="text-left flex justify-between">
                 <button
                   className="backtomenu mb-4 mt-4 font-bold"
@@ -59,7 +59,7 @@ const Cart = () => {
               <div className="md:col-span-4"></div>
               </div>
               <div className="container mx-auto grid grid-cols-12">
-                <div className="cart-details md:col-span-8">
+                <div className="cart-details col-span-12 md:col-span-8">
                   {cartItems.map((item) => {
                     const { name, description, price, imageId, id } =
                       item?.card?.info;
@@ -134,7 +134,7 @@ const Cart = () => {
                     );
                   })}
                 </div>
-                <div className="bill-section mx-5 mb-5 md:col-span-4">
+                <div className="bill-section mx-5 mb-5 col-span-12 md:col-span-4">
                   <h5 className="font-bold text-xl mb-3">Bill Details</h5>
                   <div className="billing">
                     <p>Item Total</p>

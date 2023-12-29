@@ -73,7 +73,7 @@ const Body = () => {
     <div className="body container mx-auto ">
       <div className="">
         <div className="headingTitle">
-          <h4 className="" style={{ fontWeight: "bolder" }}>
+          <h4 className=" sm:text-2xl" style={{ fontWeight: "bolder" }}>
             Restaurants With Online Food Delivery in Pune
           </h4>
         </div>

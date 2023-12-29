@@ -53,9 +53,9 @@ const RestaurantMenu = () => {
     <div className="restaurant-menu">
       <div className="container mx-auto">
         <div className="pt-5 pb-5">
-          <div className="row grid grid-cols-12">
-            <div className="col-md-2 md:col-span-2"> </div>
-            <div className="col-md-8 md:col-span-8">
+          <div className="grid grid-cols-12">
+            <div className="col-span-1 md:col-span-2"> </div>
+            <div className="col-span-10 md:col-span-8">
               <div className="details">
                 <div className="home-path">
                   <h6>
@@ -102,22 +102,22 @@ const RestaurantMenu = () => {
                   {costForTwoMessage}
                 </p>
               </div>
-              <div className="row grid grid-cols-12">
-                <div className="col-md-3 offer-upto md:col-span-3">
+              <div className="grid grid-cols-12">
+                <div className="col-span-12 offer-upto md:col-span-3">
                   <h6 className="upto-off flex">
                     <CiPercent /> Flat 10% off upto 120
                   </h6>
                   <h6 className="use-off">USE PARTY I ABOVE Rs.130</h6>
                 </div>
-                <div className="col-md-3 offer-upto md:col-span-3">
+                <div className="col-span-12 offer-upto md:col-span-3">
                   <h6 className="upto-off">Flat 10% off upto 120</h6>
                   <h6 className="use-off">USE PARTY I ABOVE Rs.130</h6>
                 </div>
-                <div className="col-md-3 offer-upto md:col-span-3">
+                <div className="col-span-12 offer-upto md:col-span-3">
                   <h6 className="upto-off">Flat 10% off upto 120</h6>
                   <h6 className="use-off">USE PARTY I ABOVE Rs.130</h6>
                 </div>
-                <div className="col-md-3 offer-upto md:col-span-3">
+                <div className="col-span-12 offer-upto md:col-span-3">
                   <h6 className="upto-off">Flat 10% off upto 120</h6>
                   <h6 className="use-off">USE PARTY I ABOVE Rs.130</h6>
                 </div>
@@ -136,7 +136,7 @@ const RestaurantMenu = () => {
                 />
               ))}
             </div>
-            <div className="col-md-2"> </div>
+            <div className="col-span-1 md:col-span-2"> </div>
           </div>
           <div className="pb-5"></div>
         </div>
