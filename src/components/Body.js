@@ -71,14 +71,14 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body container mx-auto ">
-      <div className="md:mx-10">
+      <div className="">
         <div className="headingTitle">
           <h4 className="" style={{ fontWeight: "bolder" }}>
-            Restaurants with online food delivery in Pune
+            Restaurants With Online Food Delivery in Pune
           </h4>
         </div>
         <div className="filter grid grid-cols-12">
-          <div className="searchFiltered sm:col-span-12 md:col-span-8 flex items-center">
+          <div className="searchFiltered col-span-12 md:col-span-8 flex items-center">
             <button
               className="filter-btn topRated px-4 py-2 bg-gray-100 "
               onClick={handleTopratingRestaurant}
@@ -101,7 +101,7 @@ const Body = () => {
               More than Rs.300
             </button>
           </div>
-          <div className="search sm:col-span-12 md:col-span-4">
+          <div className="search col-span-12 md:col-span-4">
             <div className="flex items-center">
               <input
                 type="text"

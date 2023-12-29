@@ -1,0 +1,67 @@
+:root{
+    --primary-color:#ff8800;
+    --hover-color:#ff4500;
+}
+
+.active{
+    color: #ff4500;
+}
+.navHeader{
+    display: flex;
+    align-items: center;
+}
+.navHeader:hover{
+    transition: 0.5s;
+    color: var(--hover-color);
+}
+nav ul li{
+    color: gray;
+    font-weight: 400;
+}
+nav ul{
+    display: flex;
+    align-items: center;
+}
+.headingTitle{
+    margin: 10px 10px;
+    font-size: 21px;
+}
+nav .menu{
+    display: none;
+    position: absolute;
+    top: 0.75rem;
+    right: 0.5rem;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 2.25rem;
+    height: 2rem;
+}
+nav .menu span{
+    height: 0.4rem;
+    width: 100%;
+    background-color: black;
+    border-radius: 0.2rem;
+}
+nav ul.open{
+    display: flex;
+}
+
+@media(max-width:768px){
+    nav .menu{
+        display: flex;
+    }
+    nav{
+        flex-direction: column;
+        align-items: start;
+    }
+    nav ul{
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        margin-bottom: 0.25rem;
+        text-align: left;
+    }
+    nav ul li{
+     margin: 5px 0;
+    }
+}

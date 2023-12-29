@@ -5,22 +5,7 @@
 
 /* Header */
 
-.navHeader{
-    display: flex;
-    align-items: center;
-}
-.navHeader:hover{
-    transition: 0.5s;
-    color: var(--hover-color);
-}
-.nav-items ul li{
-    color: gray;
-    font-weight: 400;
-}
-.headingTitle{
-    margin: 10px 10px;
-    font-size: 21px;
-}
+
 
 /* Body */
 
