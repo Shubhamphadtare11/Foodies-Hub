@@ -66,6 +66,14 @@ const Body = () => {
     setFilteredRestaurant(findGreaterprice);
   };
 
+  if (!listOfRestaurants) {
+    return (
+      <div>
+    <Shimmer />
+  </div>
+      ) 
+  }
+
   //Conditional Rendering
   return listOfRestaurants?.length === 0 ? (
     <Shimmer />
