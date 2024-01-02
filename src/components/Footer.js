@@ -15,7 +15,7 @@ const Footer = () => {
       <div className='container grid grid-cols-1 text-center  md:grid-cols-4 gap-4 mx-auto'>
 
         <div className='md:col-start-1 col-end-auto row-start-1 row-end-5'>
-          <h2 className='text-2xl font-bold'> FoodHunt</h2>
+          <h2 className='text-2xl font-bold'> Foodies Hub</h2>
           <h4 className='text-gray-300 my-4'>© 2023 made By Shubham</h4>
         </div>
 
