@@ -4,6 +4,7 @@ import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import { AiOutlineSearch, AiOutlineStar } from "react-icons/ai";
+import ShimmerCursor from "./ShimmerCursor";
 
 const Body = () => {
   //local state variable - super powerful variable
@@ -65,6 +66,15 @@ const Body = () => {
     // console.log(findGreaterprice);
     setFilteredRestaurant(findGreaterprice);
   };
+
+  if (!listOfRestaurants) {
+    return (
+      <div>
+        <ShimmerCursor/>
+    <Shimmer />
+  </div>
+      ) 
+  }
 
   //Conditional Rendering
   return listOfRestaurants?.length === 0 ? (
