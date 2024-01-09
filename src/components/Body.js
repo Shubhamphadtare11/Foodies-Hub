@@ -22,16 +22,15 @@ const Body = () => {
     const data = await fetch(
       "https://corsproxy.org/?https%3A%2F%2Fwww.swiggy.com%2Fdapi%2Frestaurants%2Flist%2Fv5%3Flat%3D18.5204303%26lng%3D73.8567437%26is-seo-homepage-enabled%3Dtrue%26page_type%3DDESKTOP_WEB_LISTING"
     );
-//https://corsproxy.io/?
+    //https://corsproxy.io/?
     const json = await data.json();
-    // console.log(
-    //   json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    // );
+
+    console.log(json);
     setListOfRestaurant(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setFilteredRestaurant(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
 
@@ -70,14 +69,14 @@ const Body = () => {
   if (!listOfRestaurants) {
     return (
       <div>
-        <ShimmerCursor/>
-    <Shimmer />
-  </div>
-      ) 
+        <ShimmerCursor />
+        <Shimmer />
+      </div>
+    );
   }
 
   //Conditional Rendering
-  return listOfRestaurants?.length === 0 ? (
+  return (!listOfRestaurants) === 0 ? (
     <Shimmer />
   ) : (
     <div className="body container mx-auto ">
@@ -146,11 +145,11 @@ const Body = () => {
                 key={restaurant.info.id}
                 to={"/restaurants/" + restaurant.info.id}
               >
-                {restaurant?.info.promoted ? (
+                {/* {restaurant?.info?.promoted ? (
                   <RestaurantCardPromoted resData={restaurant?.info} />
-                ) : (
-                  <RestaurantCard resData={restaurant?.info} />
-                )}
+                ) : ( */}
+                <RestaurantCard resData={restaurant?.info} />
+                {/* )} */}
               </Link>
             ))}
         </div>
