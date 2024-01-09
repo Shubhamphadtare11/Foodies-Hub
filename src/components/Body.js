@@ -11,6 +11,7 @@ const Body = () => {
   const [listOfRestaurants, setListOfRestaurant] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const [Loading, setLoading] = useState(false);
 
   // const RestaurantCardPromoted = withPromtedLabel(RestaurantCard);
 
@@ -19,19 +20,28 @@ const Body = () => {
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch(
-      "https://corsproxy.org/?https%3A%2F%2Fwww.swiggy.com%2Fdapi%2Frestaurants%2Flist%2Fv5%3Flat%3D18.5204303%26lng%3D73.8567437%26is-seo-homepage-enabled%3Dtrue%26page_type%3DDESKTOP_WEB_LISTING"
-    );
-    //https://corsproxy.io/?
-    const json = await data.json();
+    setLoading(true);
+    try {
+      const data = await fetch(
+        "https://corsproxy.org/?https%3A%2F%2Fwww.swiggy.com%2Fdapi%2Frestaurants%2Flist%2Fv5%3Flat%3D18.5204303%26lng%3D73.8567437%26is-seo-homepage-enabled%3Dtrue%26page_type%3DDESKTOP_WEB_LISTING"
+      );
+      //https://corsproxy.io/?
+      const json = await data.json();
 
-    console.log(json);
-    setListOfRestaurant(
-      json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    setFilteredRestaurant(
-      json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
+      console.log(json);
+      setListOfRestaurant(
+        json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants
+      );
+      setFilteredRestaurant(
+        json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants
+      );
+    } catch (error) {
+      console.error("Error fetching restaurants:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const onlineStatus = useOnlineStatus();
@@ -76,85 +86,92 @@ const Body = () => {
   }
 
   //Conditional Rendering
-  return (!listOfRestaurants) === 0 ? (
-    <Shimmer />
+  return listOfRestaurants?.length === 0 ? (
+    <div>
+      <ShimmerCursor />
+      <Shimmer />
+    </div>
   ) : (
-    <div className="body container mx-auto ">
-      <div className="">
-        <div className="headingTitle">
-          <h4 className=" sm:text-2xl" style={{ fontWeight: "bolder" }}>
-            Restaurants With Online Food Delivery in Pune
-          </h4>
-        </div>
-        <div className="filter grid grid-cols-12">
-          <div className="searchFiltered col-span-12 md:col-span-8 flex items-center">
-            <button
-              className="filter-btn topRated px-4 py-2 bg-gray-100 "
-              onClick={handleTopratingRestaurant}
-            >
-              Rating 4.0+
-              <span className="inline-block ">
-                <AiOutlineStar style={{ color: "orange" }} />
-              </span>
-            </button>
-            <button
-              className="filter-btn topRated px-4 py-2 bg-gray-100 "
-              onClick={handleBelowPrice}
-            >
-              Less than Rs.300
-            </button>
-            <button
-              className="filter-btn topRated px-4 py-2 bg-gray-100 "
-              onClick={handleAbovePrice}
-            >
-              More than Rs.300
-            </button>
+    <>
+      <div className="body container mx-auto ">
+        <div className="">
+          <div className="headingTitle">
+            <h4 className=" sm:text-2xl" style={{ fontWeight: "bolder" }}>
+              Restaurants With Online Food Delivery in Pune
+            </h4>
           </div>
-          <div className="search col-span-12 md:col-span-4">
-            <div className="flex items-center">
-              <input
-                type="text"
-                data-testid="searchInput"
-                placeholder="Search for restaurant and food"
-                className="search-box px-3 rounded-lg w-[23rem] border border-solid border-gray-400"
-                value={searchText}
-                onChange={(e) => {
-                  setSearchText(e.target.value);
-                }}
-              />
+          <div className="filter grid grid-cols-12">
+            <div className="searchFiltered col-span-12 md:col-span-8 flex items-center">
               <button
-                className="px-4 py-2 searchBtn m-4 rounded-lg"
-                onClick={() => {
-                  const filteredRestaurant = listOfRestaurants.filter((res) =>
-                    res.info.name
-                      .toLowerCase()
-                      .includes(searchText.toLowerCase())
-                  );
-                  setFilteredRestaurant(filteredRestaurant);
-                }}
+                className="filter-btn topRated px-4 py-2 bg-gray-100 "
+                onClick={handleTopratingRestaurant}
               >
-                <AiOutlineSearch />
+                Rating 4.0+
+                <span className="inline-block ">
+                  <AiOutlineStar style={{ color: "orange" }} />
+                </span>
+              </button>
+              <button
+                className="filter-btn topRated px-4 py-2 bg-gray-100 "
+                onClick={handleBelowPrice}
+              >
+                Less than Rs.300
+              </button>
+              <button
+                className="filter-btn topRated px-4 py-2 bg-gray-100 "
+                onClick={handleAbovePrice}
+              >
+                More than Rs.300
               </button>
             </div>
+            <div className="search col-span-12 md:col-span-4">
+              <div className="flex items-center">
+                <input
+                  type="text"
+                  data-testid="searchInput"
+                  placeholder="Search for restaurant and food"
+                  className="search-box px-3 rounded-lg w-[23rem] border border-solid border-gray-400"
+                  value={searchText}
+                  onChange={(e) => {
+                    setSearchText(e.target.value);
+                  }}
+                />
+                <button
+                  className="px-4 py-2 searchBtn m-4 rounded-lg"
+                  onClick={() => {
+                    const filteredRestaurant = listOfRestaurants.filter((res) =>
+                      res.info.name
+                        .toLowerCase()
+                        .includes(searchText.toLowerCase())
+                    );
+                    setFilteredRestaurant(filteredRestaurant);
+                  }}
+                >
+                  <AiOutlineSearch />
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
-        <div className="res-container  flex flex-wrap">
-          {filteredRestaurant &&
-            filteredRestaurant.map((restaurant) => (
-              <Link
-                key={restaurant.info.id}
-                to={"/restaurants/" + restaurant.info.id}
-              >
-                {/* {restaurant?.info?.promoted ? (
+          <div className="res-container  flex flex-wrap">
+            {filteredRestaurant &&
+              filteredRestaurant.map((restaurant) => (
+                <Link
+                  key={restaurant.info.id}
+                  to={"/restaurants/" + restaurant.info.id}
+                >
+                  {/* {restaurant?.info?.promoted ? (
                   <RestaurantCardPromoted resData={restaurant?.info} />
                 ) : ( */}
-                <RestaurantCard resData={restaurant?.info} />
-                {/* )} */}
-              </Link>
-            ))}
+                  <RestaurantCard resData={restaurant?.info} />
+                  {/* )} */}
+                </Link>
+              ))}
+          </div>
         </div>
+        {Loading && <Shimmer />}
       </div>
-    </div>
+      
+    </>
   );
 };
 
