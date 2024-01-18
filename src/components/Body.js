@@ -19,24 +19,41 @@ const Body = () => {
     fetchData();
   }, []);
 
+  const mql = window.matchMedia('(max-width: 900px)');
+
   const fetchData = async () => {
     setLoading(true);
     try {
       const data = await fetch(
-        "https://corsproxy.org/?https%3A%2F%2Fwww.swiggy.com%2Fdapi%2Frestaurants%2Flist%2Fv5%3Flat%3D30.7333148%26lng%3D76.7794179"
+        "https://corsproxy.org/?https%3A%2F%2Fwww.swiggy.com%2Fdapi%2Frestaurants%2Flist%2Fv5%3Flat%3D23.022505%26lng%3D72.5713621%26page_type%3DDESKTOP_WEB_LISTING"
       );
       //https://corsproxy.io/?
       const json = await data.json();
 
-      console.log(json);
-      setListOfRestaurant(
-        json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants
-      );
-      setFilteredRestaurant(
-        json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants
-      );
+      //console.log(json);
+      const jsonRestaurants=json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+      ?.restaurants;
+      if(jsonRestaurants){
+          setListOfRestaurant(
+            json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+              ?.restaurants
+          );
+          setFilteredRestaurant(
+            json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+              ?.restaurants
+          );
+        }
+        else{
+          setListOfRestaurant(
+            json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+              ?.restaurants
+          );
+          setFilteredRestaurant(
+            json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+              ?.restaurants
+          );
+        }
+      
     } catch (error) {
       console.error("Error fetching restaurants:", error);
     } finally {
