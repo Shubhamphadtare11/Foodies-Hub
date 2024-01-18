@@ -24,6 +24,7 @@ const RestaurantMenu = () => {
 
   if (resInfo === null) return <Shimmer />;
 
+  console.log(resInfo)
   const handleFeveroute = () => {
     setFevoroute("red");
   };
@@ -36,9 +37,9 @@ const RestaurantMenu = () => {
     cuisines,
     costForTwoMessage,
     areaName,
-  } = resInfo?.cards[0]?.card?.card?.info;
+  } = resInfo?.cards[0]?.card?.card?.info ? resInfo?.cards[0]?.card?.card?.info : resInfo?.cards[2]?.card?.card?.info;
 
-  const { slaString } = resInfo?.cards[0]?.card?.card?.info?.sla;
+  const { slaString } = resInfo?.cards[0]?.card?.card?.info?.sla ? resInfo?.cards[0]?.card?.card?.info?.sla : resInfo?.cards[2]?.card?.card?.info?.sla;
 
   //const {itemCards} = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
 
@@ -47,7 +48,21 @@ const RestaurantMenu = () => {
       (c) =>
         c.card?.card?.["@type"] ===
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
-    );
+    )
+    ?
+    resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+      (c) =>
+        c.card?.card?.["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    )
+    :
+    resInfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+      (c) =>
+        c.card?.card?.["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    )
+    ;
+//card 2 for web and card 5 for mobile
 
   return (
     <div className="restaurant-menu">
