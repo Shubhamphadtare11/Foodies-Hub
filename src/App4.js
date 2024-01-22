@@ -11,12 +11,12 @@ import UserContext from "./utils/UserContext";
 import useOnlineStatus from "./utils/useOnlineStatus";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
-import Cart from "./components/Cart";
+// import Cart from "./components/Cart";
 import Footer from "./components/Footer";
  
 
-
-const Grocery = lazy(() => import("./components/Grocery")); 
+//lazy loading/code splitting
+const Cart = lazy(() => import("./components/Cart")); 
 
 const AppLayout = () => {
 
@@ -74,7 +74,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/cart",
-        element: <Cart />,
+        element: <Suspense fallback={<h1>Loading...</h1>}><Cart/></Suspense>,
       },
     ],
     errorElement: <Error />,

@@ -19,7 +19,6 @@ const Body = () => {
     fetchData();
   }, []);
 
-  const mql = window.matchMedia('(max-width: 900px)');
 
   const fetchData = async () => {
     setLoading(true);

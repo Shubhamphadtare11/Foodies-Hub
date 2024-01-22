@@ -24,7 +24,7 @@ const RestaurantMenu = () => {
 
   if (resInfo === null) return <Shimmer />;
 
-  console.log(resInfo)
+  // console.log(resInfo)
   const handleFeveroute = () => {
     setFevoroute("red");
   };
