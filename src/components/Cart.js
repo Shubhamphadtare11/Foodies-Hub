@@ -124,9 +124,9 @@ const Cart = () => {
                               {description}
                             </h6>
                             <button className="addBtncart">
-                              <BiMinus onClick={() => setCounter(count - 1)} />{" "}
+                              {/* <BiMinus onClick={() => setCounter(count - 1)} />{" "}
                               {count}{" "}
-                              <BiPlus onClick={() => setCounter(count + 1)} />
+                              <BiPlus onClick={() => setCounter(count + 1)} /> */}
                             </button>
                           </div>
                         </div>
