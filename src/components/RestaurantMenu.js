@@ -28,7 +28,7 @@ const RestaurantMenu = () => {
   const handleFeveroute = () => {
     setFevoroute("red");
   };
-  
+  console.log(resInfo)
   const {
     city,
     totalRatingsString,
@@ -42,26 +42,27 @@ const RestaurantMenu = () => {
   const { slaString } = resInfo?.cards[0]?.card?.card?.info?.sla ? resInfo?.cards[0]?.card?.card?.info?.sla : resInfo?.cards[2]?.card?.card?.info?.sla;
 
   //const {itemCards} = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
-
+  
   const categories =
-    resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
-      (c) =>
-        c.card?.card?.["@type"] ===
-        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
-    )
-    ?
-    resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
-      (c) =>
-        c.card?.card?.["@type"] ===
-        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
-    )
-    :
     resInfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
       (c) =>
         c.card?.card?.["@type"] ===
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
     )
+    ?
+    resInfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+      (c) =>
+        c.card?.card?.["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    )
+    :
+    resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+      (c) =>
+        c.card?.card?.["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    )
     ;
+   
 //card 2 for web and card 5 for mobile
 
   return (
@@ -119,7 +120,7 @@ const RestaurantMenu = () => {
               </div>
               <div className="grid grid-cols-12">
                 <div className="col-span-12 offer-upto md:col-span-3">
-                  <h6 className="upto-off flex">
+                  <h6 className="upto-off flex items-center justify-center">
                     <CiPercent /> Flat 10% off upto 120
                   </h6>
                   <h6 className="use-off">USE PARTY I ABOVE Rs.130</h6>
