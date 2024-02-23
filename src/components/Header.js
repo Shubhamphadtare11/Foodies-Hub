@@ -30,9 +30,11 @@ const Header = () => {
 
   return (
     <nav className="header flex justify-between shadow-lg ">
-      <div className="logo-container">
+       <NavLink className="cursor-pointer" to="/">
+       <div className="logo-container">
         <img className="logo w-[5rem] ml-2" src={LOGO_URL} />
       </div>
+          </NavLink>
 
     <div className="menu" onClick={()=>{
       setMenuOpen(!menuOpen)

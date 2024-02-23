@@ -67,6 +67,12 @@ const Body = () => {
       <h1>looks like you are offline, please check internet connection</h1>
     );
 
+    const allRestaurants = ()=>{
+      const allRestaurantsList = listOfRestaurants;
+
+      setFilteredRestaurant(allRestaurantsList);
+    }
+
   const handleTopratingRestaurant = () => {
     const filterTopRatedRestaurant = listOfRestaurants.filter(
       (res) => res.info.avgRating > 4
@@ -118,6 +124,13 @@ const Body = () => {
           </div>
           <div className="filter grid grid-cols-12">
             <div className="searchFiltered col-span-12 md:col-span-8 flex items-center">
+            <button
+                className="filter-btn topRated px-4 py-2 bg-gray-100 "
+                onClick={allRestaurants}
+              >
+                All Restaurants
+              </button>
+             
               <button
                 className="filter-btn topRated px-4 py-2 bg-gray-100 "
                 onClick={handleTopratingRestaurant}
