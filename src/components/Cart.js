@@ -95,7 +95,7 @@ const Cart = () => {
                                   )}
                                 </span>
                               </h6>
-                              <h6 className="addBtnremove">
+                              <h6 className="addBtnremove cursor-pointer">
                                 <MdDelete
                                   onClick={() => handleRemoveSingleCart(id)}
                                 />

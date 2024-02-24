@@ -119,7 +119,7 @@ const Body = () => {
         <div className="">
           <div className="headingTitle">
             <h4 className=" sm:text-2xl" style={{ fontWeight: "bolder" }}>
-              Restaurants With Online Food Delivery in Pune
+              Restaurants With Online Food Delivery
             </h4>
           </div>
           <div className="filter grid grid-cols-12">
