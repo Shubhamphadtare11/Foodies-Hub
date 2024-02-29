@@ -123,16 +123,16 @@ const Body = () => {
             </h4>
           </div>
           <div className="filter grid grid-cols-12">
-            <div className="searchFiltered col-span-12 md:col-span-8 flex items-center">
+            <div className="searchFiltered col-span-12 md:col-span-8 flex flex-wrap items-center">
             <button
-                className="filter-btn topRated px-4 py-2 bg-gray-100 "
+                className="filter-btn topRated px-4 py-2 my-1 bg-gray-100 "
                 onClick={allRestaurants}
               >
                 All Restaurants
               </button>
              
               <button
-                className="filter-btn topRated px-4 py-2 bg-gray-100 "
+                className="filter-btn topRated px-4 py-2 my-1 bg-gray-100 "
                 onClick={handleTopratingRestaurant}
               >
                 Rating 4.0+
@@ -141,13 +141,13 @@ const Body = () => {
                 </span>
               </button>
               <button
-                className="filter-btn topRated px-4 py-2 bg-gray-100 "
+                className="filter-btn topRated px-4 py-2 my-1 bg-gray-100 "
                 onClick={handleBelowPrice}
               >
                 Less than Rs.300
               </button>
               <button
-                className="filter-btn topRated px-4 py-2 bg-gray-100 "
+                className="filter-btn topRated px-4 py-2 my-1 bg-gray-100 "
                 onClick={handleAbovePrice}
               >
                 More than Rs.300
