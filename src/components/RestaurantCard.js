@@ -23,7 +23,7 @@ const RestaurantCard = (props) => {
              src={ CDN_URL+ cloudinaryImageId}></img>
              <div className="flex justify-between items-center">
              <h3 className="font-bold py-4 text single-line" style={{fontSize: "20px"}}>{name}</h3>
-                <h4 className="avgrating" style={avgrating}><AiOutlineStar/>{avgRating}</h4>
+                <h4 className="avgrating rounded-sm" style={avgrating}><AiOutlineStar/>{avgRating}</h4>
              </div>
             <h4 className="text single-line">{cuisines.join(", ")}</h4>
             <h4>Rs.{costForTwo}</h4>
