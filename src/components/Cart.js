@@ -15,7 +15,7 @@ import  "../../style.css"
 
 const Cart = () => {
   const cartItems = useSelector((store) => store.cart.items);
-
+  console.log(cartItems)
   const [count,setCounter] = useState(1);
 
   const dispatch = useDispatch();
@@ -41,7 +41,7 @@ const Cart = () => {
             <>
             <div className="grid grid-cols-12">
             <div className="col-span-12 md:col-span-8">
-              <div className="text-left flex justify-between">
+              <div className="text-left flex justify-between mx-3">
                 <button
                   className="backtomenu mb-4 mt-4 font-bold"
                   onClick={() => navigate(-1)}
@@ -59,25 +59,24 @@ const Cart = () => {
               <div className="md:col-span-4"></div>
               </div>
               <div className="container mx-auto grid grid-cols-12">
-                <div className="cart-details col-span-12 md:col-span-8">
+                <div className="cart-details col-span-12 md:col-span-8 mx-4">
                   {cartItems.map((item) => {
-                    const { name, description, price, imageId, id } =
+                    const { name, description, price, imageId, id, defaultPrice } =
                       item?.card?.info;
                     const { vegClassifier } = item?.card?.info?.itemAttribute;
                     const { text } = item?.card?.info?.ribbon;
                     return (
                       <>
-                        <div className="card-detailss" key={id}>
-                          <div className="menu-img mx-1 mb-3">
+                        <div className="card-detailss my-4" key={id}>
+                          <div className="menu-img mx-1 mb-3 w-48">
                             <img
-                              className="menuimages"
+                              className="menuimages max-w-[100%] sm:max-w-fit"
                               src={MENU_ITEM_IMG + imageId}
                               alt="cartImg"
-                              height="150px"
-                              width="190px"
+                    
                             />
                           </div>
-                          <div className="home-path mx-5 mb">
+                          <div className="home-path w-[43rem] mx-5 mb">
                             <div className="cartbtn">
                               <h6>
                                 {vegClassifier === "VEG" ? (
@@ -105,6 +104,7 @@ const Cart = () => {
                               style={{
                                 fontWeight: "bolder",
                                 fontSize: "17px",
+                                textAlign: "left"
                               }}
                             >
                               {name}
@@ -115,19 +115,19 @@ const Cart = () => {
                                 fontSize: "14px",
                               }}
                             >
-                              ₹{price / 100}
+                              ₹{price ? price : defaultPrice / 100}
                             </h6>
                             <h6
-                              className="description-biilingcart"
+                              className="description-biilingcart text-left"
                               style={{ fontSize: "13px", color: "gray" }}
                             >
                               {description}
                             </h6>
-                            <button className="addBtncart">
-                              {/* <BiMinus onClick={() => setCounter(count - 1)} />{" "}
+                            {/* <button className="addBtncart">
+                              <BiMinus onClick={() => setCounter(count - 1)} />{" "}
                               {count}{" "}
-                              <BiPlus onClick={() => setCounter(count + 1)} /> */}
-                            </button>
+                              <BiPlus onClick={() => setCounter(count + 1)} />
+                            </button> */}
                           </div>
                         </div>
                       </>

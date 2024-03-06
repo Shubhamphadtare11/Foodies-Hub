@@ -154,12 +154,12 @@ const Body = () => {
               </button>
             </div>
             <div className="search col-span-12 md:col-span-4">
-              <div className="flex items-center">
+              <div className="flex items-center mx-3 sm:mx-0">
                 <input
                   type="text"
                   data-testid="searchInput"
                   placeholder="Search for restaurant and food"
-                  className="search-box px-3 rounded-lg w-[23rem] border border-solid border-gray-400"
+                  className="search-box px-3 py-[3px] rounded-lg w-[23rem] border border-solid border-gray-400"
                   value={searchText}
                   onChange={(e) => {
                     setSearchText(e.target.value);

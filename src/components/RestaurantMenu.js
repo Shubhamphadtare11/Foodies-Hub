@@ -1,4 +1,5 @@
 import Shimmer from "./Shimmer";
+import ShimmerCursor from "./ShimmerCursor";
 import { Link } from "react-router-dom";
 import { useNavigate, useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
@@ -22,7 +23,7 @@ const RestaurantMenu = () => {
 
   const [fevoroute, setFevoroute] = useState("");
 
-  if (resInfo === null) return <Shimmer />;
+   if (resInfo === null) return <ShimmerCursor />;
 
   // console.log(resInfo)
   const handleFeveroute = () => {
@@ -56,7 +57,7 @@ const RestaurantMenu = () => {
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
     )
     :
-    resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+    resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
       (c) =>
         c.card?.card?.["@type"] ===
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
