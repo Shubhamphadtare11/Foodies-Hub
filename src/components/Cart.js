@@ -115,7 +115,7 @@ const Cart = () => {
                                 fontSize: "14px",
                               }}
                             >
-                              ₹{price ? price : defaultPrice / 100}
+                              ₹{(price ? price : defaultPrice) / 100}
                             </h6>
                             <h6
                               className="description-biilingcart text-left"
