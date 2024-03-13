@@ -17,7 +17,7 @@ const RestaurantMenu = () => {
 
   const navigate = useNavigate;
 
-  const resInfo = useRestaurantMenu(resId);
+  const resInfo = useRestaurantMenu();
 
   const [showIndex, setShowIndex] = useState(null);
 

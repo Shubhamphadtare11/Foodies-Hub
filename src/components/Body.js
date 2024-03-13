@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import { AiOutlineSearch, AiOutlineStar } from "react-icons/ai";
 import ShimmerCursor from "./ShimmerCursor";
+import RestaurantCardAPI from "../utils/APIData/RestaurantCardAPI.json";
 
 const Body = () => {
   //local state variable - super powerful variable
@@ -16,49 +17,27 @@ const Body = () => {
   // const RestaurantCardPromoted = withPromtedLabel(RestaurantCard);
 
   useEffect(() => {
-      fetchData();
+    setLoading(true);
+    setTimeout(() => {
+      fetchData()
+    }, 1000);
+    setLoading(false);
   }, []);
 
 
-  const fetchData = async () => {
-    setLoading(true);
-    try {
-      const data = await fetch(
-        "https://corsproxy.org/?https%3A%2F%2Fwww.swiggy.com%2Fdapi%2Frestaurants%2Flist%2Fv5%3Flat%3D23.022505%26lng%3D72.5713621%26page_type%3DDESKTOP_WEB_LISTING"
-      );
-      //https://corsproxy.io/?
-      const json = await data.json();
-
-      //console.log(json);
-      const jsonRestaurants=json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-      ?.restaurants;
-      if(jsonRestaurants){
+  const fetchData = () => {
           setListOfRestaurant(
-            json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+            RestaurantCardAPI[0]?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
               ?.restaurants
           );
           setFilteredRestaurant(
-            json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+            RestaurantCardAPI[0]?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
               ?.restaurants
           );
-        }
-        else{
-          setListOfRestaurant(
-            json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
-              ?.restaurants
-          );
-          setFilteredRestaurant(
-            json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
-              ?.restaurants
-          );
-        }
-      
-    } catch (error) {
-      console.error("Error fetching restaurants:", error);
-    } finally {
-      setLoading(false);
-    }
+    
   };
+
+ // console.log(RestaurantCardAPI)
 
   const onlineStatus = useOnlineStatus();
 
